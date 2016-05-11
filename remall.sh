@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# remove.sh
+# remall.sh
 # (c) 2016 Derrik Walker v2.0
 #
 # This is intended to remove all the m3u files on a thumb drive that was created for  use in a
