@@ -23,6 +23,7 @@
 # This is licensed for use under the GNU General Pulbic License v2
 #
 # 2016-04-24	DW2	Initial Version
+# 2016-05-28	DW2	Added nulling files before building
 #
 
 for band in *
@@ -58,6 +59,8 @@ do
 					index=$(( disc*100 + track )) 
 					list[$index]="$song"
 				done
+
+				> "$album".m3u 	# incase it alreay exists for some reason
 
 				#
 				# have to get the list of indexes for the list, and sort them in numerical order

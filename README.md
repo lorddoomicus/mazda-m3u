@@ -4,7 +4,7 @@ These are some example scripts for creating m3u playlist files on the Mazda Conn
 
 For more information, see this blog post:
 
-http://www.doomd.net/
+http://www.doomd.net/2016/05/creating-m3u-playlist-files-for-mzd.html
 
 ## Assumptions for these to work correctly
 
@@ -28,10 +28,10 @@ http://www.doomd.net/
 	- This will create one m3u file per album, for every album in $PWD.
 
 - remall.sh
-  - this will clean up all the m3u files from $PWD down.
+	- this will clean up all the m3u files from $PWD down.
 
 ## Final Thoughts
-While this is being developed for use with the Mazda Connect system in my car, there is now reason why it can't be easily adapted to almost any use where playlist files in the m3u format are needed.
+While this is being developed for use with the Mazda Connect system in my car, there is no reason why it can't be easily adapted to almost any use where playlist files in the m3u format are needed.
 
 ## License
 
