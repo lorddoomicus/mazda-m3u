@@ -24,7 +24,8 @@
 #
 # This is licensed for use under the GNU General Pulbic License v2
 #
-# 2016-04-18	Initial version
+# 2016-04-18	DW2	Initial version
+# 2016-06-10	DW2	Made the random playlist "random"	
 #
 
 #
@@ -32,12 +33,14 @@
 #
 excl="(live) (demo)"
 exlf=/tmp/e.txt
-echo $excl | fold -s -w 7 > $exlf 
+# echo $excl | fold -s -w 7 > $exlf 
+echo $excl | tr  " " "\n" > $exlf 
 
 echo making everything ...
 find * -name '*.mp3' -print | sort > everything.m3u
 
 echo making random ...
 
-grep -f $exlf -i -v everything.m3u > random.m3u
+#grep -f $exlf -i -v everything.m3u > random.m3u
+find * -name "*.mp3" -print | grep -i -v -f $exlf | sort -R > random.m3u
 
