@@ -20,7 +20,7 @@
 #
 # This is the scipt used to run the simulated tests from the blog post:
 #
-# http://www.doomd.net/
+# http://www.doomd.net/2016/05/creating-m3u-playlist-files-for-mzd.html 
 #
 # This is licensed for use under the GNU General Pulbic License v2
 #
