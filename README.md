@@ -27,6 +27,9 @@ http://www.doomd.net/2016/05/creating-m3u-playlist-files-for-mzd.html
 - album.sh  
 	- This will create one m3u file per album, for every album in $PWD.
 
+- year.sh
+	- This will create a m3u file for a specied range of years in the same level as everything.sh does
+
 - remall.sh
 	- this will clean up all the m3u files from $PWD down.
 
