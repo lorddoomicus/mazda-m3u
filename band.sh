@@ -16,24 +16,37 @@
 #          even the root level of the thumbdrive.
 #
 #
-# This is the scipt used to run the simulated tests from the blog post:
+# This is the scipt goes with the blog post:
 #
 # http://www.doomd.net/2016/05/creating-m3u-playlist-files-for-mzd.html 
 #
 # This is licensed for use under the GNU General Pulbic License v2
 #
-# 2016-04-18	Initial version
+# 2016-04-18	DW2	Initial version
+# 2016-06-25	DW2	Sorted the m3u by song title
 #
 
 echo making band level m3u files ...
+
 
 for i in *
 do 
 	if [[ ! $i =~ \.m3u$ ]]
 	then 
 		echo processing $i ... 	
-		cd "$i" 
-			find * -name '*.mp3' -print | sort > "$i".m3u
+		m3u="$i".m3u
+
+		file=$(mktemp)
+
+		cd "$i"
+
+		for song in */*.mp3
+		do
+			title=$( eyeD3 --no-color "$song" 2>/dev/null | grep  '^title:' )
+			echo "${title}+${song}" >> $file
+		done
+
+		sort -d $file | awk -F'+' '{print $2}' > "$m3u"
 		cd ..
 	fi
 done 

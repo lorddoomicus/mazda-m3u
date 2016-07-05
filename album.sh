@@ -15,8 +15,7 @@
 #  	3. this is run from the directory level of the band names, which is presumed to be on a thumb drive, possibly
 #	   even the root level of the thumbdrive.
 #
-#
-# This is the scipt used to run the simulated tests from the blog post:
+# This is the scipt goes with the blog post:
 #
 # http://www.doomd.net/2016/05/creating-m3u-playlist-files-for-mzd.html 
 #

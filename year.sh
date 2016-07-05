@@ -15,14 +15,14 @@
 #  	3. this is run from the directory level of the band names, which is presumed to be on a thumb drive, possibly
 #	   even the root level of the thumbdrive.
 #
-#
-# This is the scipt used to run the simulated tests from the blog post:
+# This is the scipt goes with the blog post:
 #
 # http://www.doomd.net/2016/05/creating-m3u-playlist-files-for-mzd.html 
 #
 # This is licensed for use under the GNU General Pulbic License v2
 #
 # 2016-06-10	DW2	Initial Version
+# 2016-06-25	DW2	Sorted the m3u by song title
 #
 
 #
@@ -59,14 +59,14 @@ echo searching for years $year1 to $year2
 
 if [[ $year1 -eq $year2 ]]
 then
-	file="$year1.m3u"
+	m3u="$year1.m3u"
 else
-	file="$year1-$year2.m3u"
+	m3u="$year1-$year2.m3u"
 fi
 
-echo file is $file
+file=$(mktemp)
 
-> $file 	# null out the file
+echo m3u file is $m3u and file is $file
 
 #
 # now we can process the mp3 files
@@ -83,8 +83,8 @@ do
 
                 for album in *
                 do
-                        unset list
-                        declare -a list
+                        # unset list
+                        # declare -a list
 
                         if [[ ! $album =~ \.m3u$ ]]
                         then
@@ -100,7 +100,8 @@ do
 					
 					if [[ $year -ge $year1 && $year -le $year2 ]]
 					then 
-						echo "$band/$album/$song" >> ../../$file 
+						title=$( eyeD3 --no-color "$song" 2>/dev/null | grep  '^title:' )
+						echo "${title}+${band}/$album/$song" >> $file
 					fi
 				done
 
@@ -111,3 +112,5 @@ do
 		cd ..	# back to band list
 	fi
 done
+
+sort -d  $file | awk -F'+' '{print $2}' > $m3u

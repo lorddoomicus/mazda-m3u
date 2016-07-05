@@ -18,7 +18,7 @@
 #	   even the root level of the thumbdrive.
 #
 #
-# This is the scipt used to run the simulated tests from the blog post:
+# This is the scipt goes with the blog post:
 #
 # http://www.doomd.net/2016/05/creating-m3u-playlist-files-for-mzd.html 
 #
@@ -26,6 +26,7 @@
 #
 # 2016-04-18	DW2	Initial version
 # 2016-06-10	DW2	Made the random playlist "random"	
+# 2016-06-26	DW2	Sorted the "everything" m3u by song title
 #
 
 #
@@ -33,14 +34,19 @@
 #
 excl="(live) (demo)"
 exlf=/tmp/e.txt
-# echo $excl | fold -s -w 7 > $exlf 
 echo $excl | tr  " " "\n" > $exlf 
 
 echo making everything ...
-find * -name '*.mp3' -print | sort > everything.m3u
+file=$(mktemp)
+
+for song in */*/*.mp3
+do
+	title=$( eyeD3 --no-color "$song" 2>/dev/null | grep  '^title:' )
+	echo "${title}+${song}" >> $file
+done
+
+sort -d $file | awk -F'+' '{print $2}' > everything.m3u	
 
 echo making random ...
 
-#grep -f $exlf -i -v everything.m3u > random.m3u
 find * -name "*.mp3" -print | grep -i -v -f $exlf | sort -R > random.m3u
-
