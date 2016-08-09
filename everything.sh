@@ -32,7 +32,7 @@
 #
 # stuff to be excluded from random playlist
 #
-excl="(live) (demo)"
+excl="(live) (demo) '[demo]' '[live]'"
 exlf=/tmp/e.txt
 echo $excl | tr  " " "\n" > $exlf 
 
