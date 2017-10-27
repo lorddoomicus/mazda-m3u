@@ -1,0 +1,4 @@
+name=Music
+audio_folders=Music/
+folder_depth=2
+output_formats=audio/mpeg

@@ -27,6 +27,7 @@
 # 2016-04-18	DW2	Initial version
 # 2016-06-10	DW2	Made the random playlist "random"	
 # 2016-06-26	DW2	Sorted the "everything" m3u by song title
+# 2017-10-26	dw2	Added support for orginization in the .is_audio_player file
 #
 
 #
@@ -39,7 +40,7 @@ echo $excl | tr  " " "\n" > $exlf
 echo making everything ...
 file=$(mktemp)
 
-for song in */*/*.mp3
+for song in */*/*/*.mp3
 do
 	title=$( eyeD3 --no-color "$song" 2>/dev/null | grep  '^title:' )
 	echo "${title}+${song}" >> $file

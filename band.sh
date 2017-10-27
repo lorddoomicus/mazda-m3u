@@ -24,6 +24,7 @@
 #
 # 2016-04-18	DW2	Initial version
 # 2016-06-25	DW2	Sorted the m3u by song title
+# 2017-10-26	dw2	Added support for pls files from Rhythmbox
 #
 
 echo making band level m3u files ...
@@ -31,7 +32,7 @@ echo making band level m3u files ...
 
 for i in *
 do 
-	if [[ ! $i =~ \.m3u$ ]]
+	if [[ ! $i =~ \.m3u$ && ! $band =~ \.pls ]]
 	then 
 		echo processing $i ... 	
 		m3u="$i".m3u

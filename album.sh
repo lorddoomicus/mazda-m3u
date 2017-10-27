@@ -23,6 +23,7 @@
 #
 # 2016-04-24	DW2	Initial Version
 # 2016-05-28	DW2	Added nulling files before building
+# 2017-10-26	dw2	Added support for pls files from Rhythmbox
 #
 
 for band in *
@@ -30,7 +31,7 @@ do
 	#
 	# First, ignore any existing m3u files
 	#
-	if [[ ! $band =~ \.m3u$ ]]
+	if [[ ! $band =~ \.m3u$  && ! $band =~ \.pls ]]
 	then 
 		cd "$band"
 
