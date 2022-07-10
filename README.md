@@ -4,7 +4,7 @@ These are some example scripts for creating m3u playlist files on the Mazda Conn
 
 For more information, see this blog post:
 
-http://www.doomd.net/2016/05/creating-m3u-playlist-files-for-mzd.html
+https://www.doomd.net/creating-m3u-playlist-files-for-mzd.html
 
 ## Assumptions for these to work correctly
 
